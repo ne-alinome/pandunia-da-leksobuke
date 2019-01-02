@@ -2,6 +2,10 @@
 :author: Marcos Cruz (programandala.net)
 :revdate: 2019-01-02
 
+// This file is part of the project
+// _pandunia da lekse buke_
+// (http://ne.alinome.net)
+
 == About this project
 
 Description:: Create an EPUB e-book and a dict file from the current
