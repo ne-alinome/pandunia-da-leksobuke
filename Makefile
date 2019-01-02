@@ -23,7 +23,13 @@ VPATH=./src:./target
 # Interface
 
 .PHONY: all
-all: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+all: epub
+
+.PHONY: adoc
+adoc: target/pandunia_da_lekse_buke.adoc
+
+.PHONY: epub
+epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
 
 .PHONY: clean
 clean:

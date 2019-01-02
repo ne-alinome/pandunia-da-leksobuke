@@ -6,3 +6,5 @@
 // _pandunia da lekse buke_
 // (http://ne.alinome.net)
 
+- Use ISO 639-2 codes also in the translations.
+

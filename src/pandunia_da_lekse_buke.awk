@@ -23,8 +23,12 @@ BEGIN {
 	print
 	print ":bullet: ."
 	print
+	print "// This file is part of the project"
+	print "// _pandunia da lekse buke_"
+	print "// (http://ne.alinome.net)"
+	print
 	print "// This document was created automatically"
-	print "// in Asciidoctor format."
+	print "// in Asciidoctor format (http://asciidoctor.org)."
 	print
 	print "== na ci buke"
 	print
@@ -37,8 +41,10 @@ BEGIN {
 	print
 	print "Marcos Cruz, 2019-01"
 	print
-	print "== lekse liste"
-	print
+
+	current_letter="*" # dummy non-alphabet character to start
+
+	default_ORS=ORS
 
 	}
 
@@ -46,19 +52,51 @@ BEGIN {
 
 {
 	if (NR>1){
-		print "{bullet}**",$4,"** (",$2,")"
+
+		loge_asle= $1
+		klase=     $2 # coverb, dex, made, mosim, nax, planet
+
+		pandunia=  $4
+
+		engli=     $6
+		esperanti= $7
+		suomi=     $8
+		polski=    $9
+		putonghan= $11
+		rusi=      $12
+		espani=    $10
+		fransi=    $13
+
+		this_letter=substr(pandunia,1,1)
+		if (this_letter!=current_letter){
+			current_letter=this_letter
+			print ""
+			print "// ",current_letter," {{{1"
+			print "== ",current_letter
+			print ""
+			}
+
+		print "{bullet}**",pandunia,"**"
+		if (klase!=""){
+			ORS=""
+			print " (",klase,")"
+			ORS=default_ORS
+			print ""
+		}
 		print ""
-		if ($6!="")  print "- engli: ",$6
-		if ($10!="") print "- espani: ",$10
-		if ($7!="")  print "- esperanti: ",$7
-		if ($13!="") print "- fransi: ",$13
-		if ($9!="")  print "- polski: ",$9
-		if ($11!="") print "- putonghan: ",$11
-		if ($12!="") print "- rusi: ",$12
-		if ($8!="")  print "- suomi: ",$8
+
+		if (engli!="")     print "- engli: "     , engli
+		if (espani!="")    print "- espani: "    , espani
+		if (esperanti!="") print "- esperanti: " , esperanti
+		if (fransi!="")    print "- fransi: "    , fransi
+		if (polski!="")    print "- polski: "    , polski
+		if (putonghan!="") print "- putonghan: " , putonghan
+		if (rusi!="")      print "- rusi: "      , rusi
+		if (suomi!="")     print "- suomi: "     , suomi
 		print ""
-		if ($1!=""){
-			print "loge asle: ",$1
+
+		if (loge_asle!=""){
+			print "loge asle: ",loge_asle
 			print ""
 		}
 	}
