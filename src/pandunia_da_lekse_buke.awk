@@ -6,12 +6,12 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901030032
+# Last modified 201901031934
 # See change log at the end of the file
 
 # ==============================================================
 
-BEGIN {
+BEGIN { # {{{1
 
 	RS = "\n" 
 	FS = "\t"
@@ -21,7 +21,8 @@ BEGIN {
 		target=="asciidoctor" # default value
 	}
 
-	# print "target==",target; exit # XXX INFORMER
+	#print "target==",target # XXX INFORMER
+	#exit # XXX INFORMER
 
 	if (target=="asciidoctor"){
 		print "= pandunia da lekse buke"
@@ -73,7 +74,7 @@ BEGIN {
 
 # ==============================================================
 
-{
+{ # main block {{{1
 	if (NR>1){
 
 		pandunia=  $4 # headword
@@ -90,13 +91,13 @@ BEGIN {
 		espani=    $10
 		fransi=    $13
 
-		if (target=="asciidoctor"){
+		if (target=="asciidoctor"){ # {{{2
 
 			this_letter=substr(pandunia,1,1)
 			if (this_letter!=current_letter){
 				current_letter=this_letter
 				print ""
-				print "// ",current_letter," {{{1"
+				print "// ",current_letter," {","{","{1"
 				print "== ",current_letter
 				print ""
 			}
@@ -111,10 +112,10 @@ BEGIN {
 
 		}
 
-		if (target=="c5"){
+		if (target=="c5"){ # {{{2
 			
 			print "_____"
-			print
+			print ""
 			print pandunia
 			if (klase!=""){
 				print "(",klase,")"
@@ -123,8 +124,8 @@ BEGIN {
 
 		}
 
-		if (target=="p"){
-			
+		if (target=="p"){ # {{{2
+
 			print "%h ",pandunia
 			print "%d"
 			if (klase!=""){
@@ -156,13 +157,14 @@ BEGIN {
 
 # ==============================================================
 
-END { }
+END { } # {{{1
 
 # ==============================================================
-# Change log
+# Change log {{{1
 
-# 2019-01-02: Start. Create an Asciidoctor document from the
-# original data.
+# 2019-01-02: Start. Create an Asciidoctor document from the original
+# data.
 #
-# 2019-01-03: Create also two of the input formats used by dictfmt
-# in order to create a difct format dictionary.
+# 2019-01-03: Create also two of the input formats used by dictfmt in
+# order to create a difct format dictionary. Add Vim folding
+# markers. Fix output of "c5" format.
