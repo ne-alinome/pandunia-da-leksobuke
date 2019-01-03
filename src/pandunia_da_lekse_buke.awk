@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901031936
+# Last modified 201901031948
 # See change log at the end of the file
 
 # ==============================================================
@@ -56,7 +56,7 @@ BEGIN { # {{{1
 
   }
 
-  if (target=="c5"||target="p"){
+  if (target=="c5"||target=="p"){
     print "pandunia da lekse buke"
     print "du Risto Kupsala"
     print
@@ -168,3 +168,4 @@ END { } # {{{1
 # 2019-01-03: Create also two of the input formats used by dictfmt in
 # order to create a difct format dictionary. Add Vim folding
 # markers. Fix output of "c5" format. Convert tabs to spaces.
+# Fix expression.
