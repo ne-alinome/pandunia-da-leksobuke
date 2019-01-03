@@ -7,28 +7,3 @@
 // (http://ne.alinome.net)
 
 - Use ISO 639-2 codes also in the translations.
-
-- The current 
-
-The current dict filename is too long:
-
-....
-dict -D
-
-gcide      The Collaborative International Dictionary of English v.0.48
-jargon     The Jargon File (version 4.4.7, 29 Dec 2003)
-vera       V.E.R.A. -- Virtual Entity of Relevant Acronyms (June 2006)
-fd-eng-spa English-Spanish Freedict dictionary
-fd-lat-eng Latin-English Freedict dictionary
-fd-eng-lat English-Latin Freedict dictionary
-pandunia_da_lekse_buke pandunia da lekse buke
-fd-spa-eng Spanish-English Freedict dictionary
-....
-
-Shorten the filename and the title:
-
-....
-pandunia   Pandunia Dictionary
-....
-
-

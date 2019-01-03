@@ -31,7 +31,7 @@ all: epub
 adoc: target/pandunia_da_lekse_buke.adoc
 
 .PHONY: dict
-dict: target/pandunia_da_lekse_buke.dict.dz
+dict: target/pandunia.dict.dz
 
 .PHONY: epub
 epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
@@ -73,12 +73,12 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 # ==============================================================
 # Make dict and install it
 
-target/pandunia_da_lekse_buke.dict: tmp/pandunia_da_lekse_buke.txt
+target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
 	dictfmt \
 		--utf8 \
 		--allchars \
 		-u "http://pandunia.info" \
-		-s "pandunia da lekse buke" \
+		-s "pandunia da lekse buke (Pandunia Dictionary)" \
 		-$(dict_input_format) \
 		$(basename $@) < $<
 
@@ -86,7 +86,7 @@ target/pandunia_da_lekse_buke.dict: tmp/pandunia_da_lekse_buke.txt
 	dictzip --force $<
 
 .PHONY: install
-install: target/pandunia_da_lekse_buke.dict.dz
+install: target/pandunia.dict.dz
 	cp --force \
 		$^ \
 		$(addsuffix .index, $(basename $(basename $^))) \
