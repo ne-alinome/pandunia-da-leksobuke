@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901031948
+# Last modified 201901052353
 # See change log at the end of the file
 
 # ==============================================================
@@ -70,6 +70,28 @@ BEGIN { # {{{1
     print "na 2019-01-03"
     print
   }
+
+  iso_codes=1
+
+  # if (iso_codes){
+  #   eng_lang="eng"
+  #   esp_lang="epo"
+  #   fin_lang="fin"
+  #   fra_lang="fra"
+  #   pol_lang="pol"
+  #   rus_lang="rus"
+  #   spa_lang="spa"
+  #   zho_lang="zho"
+  # }else{
+  #   eng_lang="engli"
+  #   esp_lang="espani"
+  #   esp_lang="esperanti"
+  #   fin_lang="suomi"
+  #   fra_lang="fransi"
+  #   pol_lang="polski"
+  #   rus_lang="rusi"
+  #   zho_lang="putonghan"
+  # }
 }
 
 # ==============================================================
@@ -79,7 +101,7 @@ BEGIN { # {{{1
 
     pandunia=  $4 # headword
     loge_asle= $1 # origin
-    klase=     $2 # class: coverb, dex, made, mosim, nax, planet
+    klase=     $2 # class: coverb, dex, made, mosim, nas, planet
 
     # translations:
     engli=     $6
@@ -137,14 +159,29 @@ BEGIN { # {{{1
 
     print ""
 
-    if (engli!="")     print "- engli: "     , engli
-    if (espani!="")    print "- espani: "    , espani
-    if (esperanti!="") print "- esperanti: " , esperanti
-    if (fransi!="")    print "- fransi: "    , fransi
-    if (polski!="")    print "- polski: "    , polski
-    if (putonghan!="") print "- putonghan: " , putonghan
-    if (rusi!="")      print "- rusi: "      , rusi
-    if (suomi!="")     print "- suomi: "     , suomi
+    if (iso_codes){
+
+      if (engli!="")     print "- eng: " , engli
+      if (esperanti!="") print "- epo: " , esperanti
+      if (suomi!="")     print "- fin: " , suomi
+      if (fransi!="")    print "- fra: " , fransi
+      if (polski!="")    print "- pol: " , polski
+      if (rusi!="")      print "- rus: " , rusi
+      if (espani!="")    print "- spa: " , espani
+      if (putonghan!="") print "- zho: " , putonghan
+
+    } else {
+
+      if (engli!="")     print "- engli: "     , engli
+      if (espani!="")    print "- espani: "    , espani
+      if (esperanti!="") print "- esperanti: " , esperanti
+      if (fransi!="")    print "- fransi: "    , fransi
+      if (polski!="")    print "- polski: "    , polski
+      if (putonghan!="") print "- putonghan: " , putonghan
+      if (rusi!="")      print "- rusi: "      , rusi
+      if (suomi!="")     print "- suomi: "     , suomi
+
+    }
 
     print ""
 
@@ -163,9 +200,12 @@ END { } # {{{1
 # Change log {{{1
 
 # 2019-01-02: Start. Create an Asciidoctor document from the original
-# data.
+  # data.
 #
 # 2019-01-03: Create also two of the input formats used by dictfmt in
-# order to create a difct format dictionary. Add Vim folding
-# markers. Fix output of "c5" format. Convert tabs to spaces.
-# Fix expression.
+  # order to create a difct format dictionary. Add Vim folding
+  # markers. Fix output of "c5" format. Convert tabs to spaces.  Fix
+  # expression.
+#
+# 2019-01-05 Fix typo in comment. Support and use optional ISO 639-2
+  # language codes for the translations.

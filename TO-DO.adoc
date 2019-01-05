@@ -1,9 +1,9 @@
 = TO-DO of _pandunia da lekse buke_
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-01-03
+:revdate: 2019-01-05
 
 // This file is part of the project
 // _pandunia da lekse buke_
 // (http://ne.alinome.net)
 
-- Use ISO 639-2 codes also in the translations.
+- Make the sorting of translations automatic.
