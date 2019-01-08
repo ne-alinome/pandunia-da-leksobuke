@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901052353
+# Last modified 201901090103
 # See change log at the end of the file
 
 # ==============================================================
@@ -48,7 +48,7 @@ BEGIN { # {{{1
     print "plus na http://ne.alinome.net[ne.alinome.net]"
     print "du _markos krus_ (\"Marcos Cruz\")."
     print
-    print "na 2019-01-03"
+    print "na 2019-01-09"
 
     current_letter="*" # dummy non-alphabet character to start
 
@@ -207,5 +207,7 @@ END { } # {{{1
   # markers. Fix output of "c5" format. Convert tabs to spaces.  Fix
   # expression.
 #
-# 2019-01-05 Fix typo in comment. Support and use optional ISO 639-2
+# 2019-01-05: Fix typo in comment. Support and use optional ISO 639-2
   # language codes for the translations.
+#
+# 2019-01-09: Update date.
