@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901181407
+# Last modified 201901181421
 # See change log at the end of the file
 
 # ==============================================================
@@ -29,7 +29,7 @@ dict_input_format=c5
 # Interface
 
 .PHONY: all
-all: epub
+all: dict epub odt rtf txt xml
 
 .PHONY: adoc
 adoc: target/pandunia_da_lekse_buke.adoc
@@ -39,6 +39,18 @@ dict: target/pandunia.dict.dz
 
 .PHONY: epub
 epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+
+.PHONY: odt
+odt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.odt
+
+.PHONY: rtf
+rtf: target/pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
+
+.PHONY: txt
+txt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.txt
+
+.PHONY: xml
+xml: target/pandunia_da_lekse_buke.adoc.xml
 
 .PHONY: clean
 clean:
@@ -73,6 +85,24 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 
 %.adoc.xml.pandoc.epub: %.adoc.xml
 	pandoc -f docbook -t epub --output $@ $<
+
+# ==============================================================
+# Make ODT from DocBook
+
+%.adoc.xml.pandoc.odt: %.adoc.xml
+	pandoc -f docbook -t odt --output $@ $<
+
+# ==============================================================
+# Make RTF from DocBook
+
+%.adoc.xml.pandoc.rtf: %.adoc.xml
+	pandoc -f docbook -t rtf --standalone --output $@ $<
+
+# ==============================================================
+# Make plain text from DocBook
+
+%.adoc.xml.pandoc.txt: %.adoc.xml
+	pandoc -f docbook -t plain --output $@ $<
 
 # ==============================================================
 # Make dict
@@ -116,4 +146,4 @@ uninstall:
 # 2019-01-03: Create also a dict format dictionary.
 #
 # 2019-01-18: Update the requirements. Add rule to uninstall the dict format
-# dictionary.
+# dictionary. Add ODT, RTF and TXT outputs.

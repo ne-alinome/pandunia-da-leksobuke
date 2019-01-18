@@ -8,3 +8,4 @@
 
 - Make the sorting of translations automatic.
 - Install also <pandunia.sh> as </usr/local/bin/pandunia>.
+- Add info about target file names.
