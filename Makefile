@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901181623
+# Last modified 201901181629
 # See change log at the end of the file
 
 # ==============================================================
@@ -70,7 +70,7 @@ target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
 		$< > $@
 
 # ==============================================================
-# Make dict input text from the original table
+# Make dictfmt input text from the original table
 
 tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 	awk \
@@ -112,7 +112,7 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 # Make plain text from DocBook
 
 %.adoc.xml.pandoc.txt: %.adoc.xml
-	pandoc -f docbook -t plain --output $@ $<
+	pandoc -f docbook -t plain --standalone --output $@ $<
 
 # ==============================================================
 # Make dict
