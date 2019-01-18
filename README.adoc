@@ -6,9 +6,11 @@
 // _pandunia da lekse buke_
 // (http://ne.alinome.net)
 
+:user: ~
+
 == About this project
 
-Description:: Create standard format files from the contents of the
+Goal:: Create standard-format files from the contents of the
 http://pandunia.info/[Pandunia] vocabulary, in order to make it easier
 to read, consult and study.
 
@@ -18,13 +20,11 @@ Website:: http://ne.alinome.net
 
 == Target formats
 
-At the moment, the original data file is converted into the following formats:
-
 |===
 | Format                            | Filename extension
 
 | Asciidoctor                       | adoc
-| DICT protocol dictionary database | dict.dz
+| DICT protocol dictionary database | dict.dz, index
 | DocBook                           | xml
 | EPUB                              | epub
 | OpenDocument                      | odt
@@ -39,12 +39,12 @@ More formats may be added in the future.
 
 First make sure the following programs are installed in your system:
 
-- asciidoctor
-- asciidoctor-pdf
+- asciidoctor (not needed for DICT)
+- asciidoctor-pdf (needed only for PDF)
 - awk
-- dictfmt
+- dictfmt (needed only for DICT)
 - make
-- pandoc
+- pandoc (not needed for Asciidoctor, DICT, DocBook or PDF)
 
 Then enter the project directory and give the proper command:
 
@@ -54,17 +54,58 @@ Then enter the project directory and give the proper command:
 | `make`                | Make all formats
 | `make all`            | Make all formats
 | `make adoc`           | Make only Asciidoctor
-| `make dict`           | Make only DICT
+| `make dict`           | Make only DICT database
 | `make epub`           | Make only EPUB
 | `make odt`            | Make only ODT
 | `make rtf`            | Make only RTF
 | `make txt`            | Make only plain text
 | `make xml`            | Make only DocBook
-| `sudo make install`   | Install the dict
-| `sudo make uninstall` | Uninstall the dict
+| `sudo make install`   | Install the DICT database
+| `sudo make uninstall` | Uninstall the DICT database
 |===
 
-== How to use the dict format
+== About the filenames of the target documents
+
+In order to facilitate to make more target formats and use alternative
+conversion tools, the filenames of the target documents keep the
+filename extension of the format they were converted from, and also
+the name of the third-party converter, in a hierarchical way.
+Examples:
+
+This is the Asciidoctor primary source, made from the original data:
+
+....
+pandunia_da_lekse_buke.adoc
+....
+
+These are the PDF and DocBook versions, created directly from and by
+Asciidoctor:
+
+....
+pandunia_da_lekse_buke.adoc.pdf
+pandunia_da_lekse_buke.adoc.xml
+....
+
+And these are created from DocBook by pandoc:
+
+....
+pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+pandunia_da_lekse_buke.adoc.xml.pandoc.odt
+pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
+pandunia_da_lekse_buke.adoc.xml.pandoc.txt
+....
+
+This naming convention will allow to create additional variants of the
+same formats, e.g. <pandunia_da_lekse_buke.adoc.epub> (direct
+conversion from Asciidoctor into EPUB, by asciidoctor-epub3) and
+<pandunia_da_lekse_buke.adoc.xml.xsltproc.epub> (conversion from
+DocBook to EPUB, by xsltproc).
+
+Of course, you are free to rename your files of choice, e.g. rename
+<pandunia_da_lekse_buke.adoc.xml.pandoc.epub>
+<pandunia_da_lekse_buke.epub>.
+
+== How to use the DICT format
 
 After making (`make dict`) and installing (`sudo make install`) the
 dict-format dictionary, you can use dict as usual. Examples:
@@ -76,7 +117,39 @@ dict-format dictionary, you can use dict as usual. Examples:
 
 Read the dict's documentation for more details and search options.
 
+=== Wrapper command
+
 A simple shell wrapper is provided in <src/pandunia.sh>. You can copy
-that file to a location in your path, e.g. as <\~/bin/pandunia> or
+that file to a location in your path, e.g. as <{user}/bin/pandunia> or
 </usr/local/bin/pandunia>. Then the command `pandunia` will be
 equivalent to `dict -d pandunia`.
+
+Alternatively, you may define an equivalent alias for your system
+shell. Example definition for Bash (to be added to the file
+<{user}/.bash_aliases>):
+
+----
+alias pandunia='dict -d pandunia'
+----
+
+== Known issues
+
+=== EPUB
+
+Currently, The EPUB is built from DocBook using an old version of
+pandoc which does not allow easy customization of the template.  The
+result is not fully satisfactory yet.  Planned alternatives are: an
+updated pandoc, asciidoctor-epub3 and xsltproc.
+
+=== PDF
+
+The letter sections of the document don't start on a new page.
+
+=== Rich Text Format
+
+The headings are not marked with proper hierarchical styles.
+Therefore, building an automatic table of contents with a
+wordprocessor is not possible.
+
+Anyway, this format is included only because it can be read by old
+ordprocessors.
