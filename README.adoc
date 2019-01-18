@@ -1,6 +1,6 @@
 = pandunia da lekse buke
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-01-02
+:revdate: 2019-01-18
 
 // This file is part of the project
 // _pandunia da lekse buke_
@@ -8,9 +8,57 @@
 
 == About this project
 
-Description:: Create an EPUB e-book and a dict file from the current
-contents of the http://pandunia.info/[Pandunia] vocabulary.
+Description:: Create standard format files, from the contents of the
+http://pandunia.info/[Pandunia] vocabulary.
 
 Author:: Marcos Cruz (programandala.net), 2019
 
 Website:: http://ne.alinome.net
+
+== Target formats
+
+At the moment, the original data file is converted into the following formats:
+
+- EPUB e-book.
+- http://dict.org[dict] dictionary
+
+More formats will be added eventually.
+
+== How to make the target files
+
+First make sure the following programs are installed in your system:
+
+- asciidoctor
+- awk
+- dictfmt
+- make
+- pandoc
+
+Then enter the project directory and give the proper command:
+
+|===
+| Command               | Effect
+
+| `make`                | Build the EPUB and the dict
+| `make epub`           | Build only the EPUB
+| `make dict`           | Build only the dict
+| `sudo make install`   | Install the dict
+| `sudo make ininstall` | Install the dict
+|===
+
+== How to use the dict format
+
+After making (`make dict`) and installing (`sudo make install`) it,
+you can use dict as usual. Examples:
+
+- List the available dictionaries with `dict -D`. You must see the
+  "pandunia" dictionary in the list.
+- Consult a Pandunia word with `dict -d pandunia WORD`.
+- Request information on the dictionary with `dict -i pandunia`.
+
+Read the dict's documentation for more details.
+
+A simple shell wrapper is provided in <src/pandunia.sh>. You can copy
+that file to a location in your path, e.g. as <\~/bin/pandunia> or
+</usr/local/bin/pandunia>. Then the command `pandunia` will be
+equivalent to `dict -d pandunia`.
