@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901181629
+# Last modified 201901181735
 # See change log at the end of the file
 
 # ==============================================================
@@ -30,7 +30,7 @@ dict_input_format=c5
 # Interface
 
 .PHONY: all
-all: dict epub odt pdf rtf txt xml
+all: dict epub html odt pdf rtf txt xml
 
 .PHONY: adoc
 adoc: target/pandunia_da_lekse_buke.adoc
@@ -40,6 +40,11 @@ dict: target/pandunia.dict.dz
 
 .PHONY: epub
 epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+
+.PHONY: html
+html: \
+	target/pandunia_da_lekse_buke.adoc.html \
+	target/pandunia_da_lekse_buke.adoc.xml.pandoc.html
 
 .PHONY: odt
 odt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.odt
@@ -89,6 +94,27 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 
 %.adoc.xml.pandoc.epub: %.adoc.xml
 	pandoc -f docbook -t epub --output $@ $<
+
+# ==============================================================
+# Make HTML
+
+# ----------------------------------------------
+# From Asciidoctor
+
+# Note: This HTML file includes the Asciidoctor's default stylesheet in the
+# HTML header.  A default stylesheet may be used, set by documents attributes
+# `:stylesheet:` and `:stylesheet:`, which can be set also from the command
+# line, e.g. `-a stylesheet=my_styles.css -a stylesdir=../stylesheets`.
+# Setting a missing CSS file causes the document to use no stylesheet.
+
+%.adoc.html: %.adoc
+	asciidoctor --backend=html --out-file=$@ $<
+
+# ----------------------------------------------
+# From DocBook
+
+%.adoc.xml.pandoc.html: %.adoc.xml
+	pandoc -f docbook -t html --standalone --output $@ $<
 
 # ==============================================================
 # Make ODT from DocBook
@@ -156,4 +182,4 @@ uninstall:
 # 2019-01-03: Create also a dict format dictionary.
 #
 # 2019-01-18: Update the requirements. Add rule to uninstall the dict format
-# dictionary. Add ODT, PDF, RTF and TXT outputs.
+# dictionary. Add HTML, ODT, PDF, RTF and TXT outputs.

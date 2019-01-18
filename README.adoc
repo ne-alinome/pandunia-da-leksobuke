@@ -27,6 +27,7 @@ Website:: http://ne.alinome.net
 | DICT protocol dictionary database | dict.dz, index
 | DocBook                           | xml
 | EPUB                              | epub
+| HTML                              | html
 | OpenDocument                      | odt
 | PDF                               | pdf
 | Plain text                        | txt
@@ -72,32 +73,35 @@ filename extension of the format they were converted from, and also
 the name of the third-party converter, in a hierarchical way.
 Examples:
 
-This is the Asciidoctor primary source, made from the original data:
+This is the Asciidoctor source file, made from the original data:
 
 ....
 pandunia_da_lekse_buke.adoc
 ....
 
-These are the PDF and DocBook versions, created directly from and by
-Asciidoctor:
+These files are created directly from and by Asciidoctor:
 
 ....
+pandunia_da_lekse_buke.adoc.html
 pandunia_da_lekse_buke.adoc.pdf
 pandunia_da_lekse_buke.adoc.xml
 ....
 
-And these are created from DocBook by pandoc:
+And these files are created from DocBook by pandoc:
 
 ....
 pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+pandunia_da_lekse_buke.adoc.xml.pandoc.html
 pandunia_da_lekse_buke.adoc.xml.pandoc.odt
 pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
 pandunia_da_lekse_buke.adoc.xml.pandoc.txt
 ....
 
-This naming convention will allow to create additional variants of the
-same formats, e.g. <pandunia_da_lekse_buke.adoc.epub> (direct
-conversion from Asciidoctor into EPUB, by asciidoctor-epub3) and
+As you see, this naming convention allows both HTML variants coexist
+without filename clash.  In future versions of the project, also
+variants of the EPUB format will be added as well,  e.g.
+<pandunia_da_lekse_buke.adoc.epub> (direct conversion from Asciidoctor
+to EPUB, by asciidoctor-epub3) and
 <pandunia_da_lekse_buke.adoc.xml.xsltproc.epub> (conversion from
 DocBook to EPUB, by xsltproc).
 
