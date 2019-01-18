@@ -28,17 +28,19 @@ At the moment, the original data file is converted into the following formats:
 | DocBook                           | xml
 | EPUB                              | epub
 | OpenDocument                      | odt
+| PDF                               | pdf
 | Plain text                        | txt
 | Rich Text Format                  | rtf
 |===
 
-More formats will be added in the future.
+More formats may be added in the future.
 
 == How to make the target files
 
 First make sure the following programs are installed in your system:
 
 - asciidoctor
+- asciidoctor-pdf
 - awk
 - dictfmt
 - make

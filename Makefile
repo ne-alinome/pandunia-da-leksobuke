@@ -6,13 +6,14 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901181421
+# Last modified 201901181623
 # See change log at the end of the file
 
 # ==============================================================
 # Requirements
 
 # - asciidoctor
+# - asciidoctor-pdf
 # - awk
 # - dictfmt
 # - make
@@ -29,7 +30,7 @@ dict_input_format=c5
 # Interface
 
 .PHONY: all
-all: dict epub odt rtf txt xml
+all: dict epub odt pdf rtf txt xml
 
 .PHONY: adoc
 adoc: target/pandunia_da_lekse_buke.adoc
@@ -42,6 +43,9 @@ epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
 
 .PHONY: odt
 odt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.odt
+
+.PHONY: pdf
+pdf: target/pandunia_da_lekse_buke.adoc.pdf
 
 .PHONY: rtf
 rtf: target/pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
@@ -91,6 +95,12 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 
 %.adoc.xml.pandoc.odt: %.adoc.xml
 	pandoc -f docbook -t odt --output $@ $<
+
+# ==============================================================
+# Make PDF from Asciidoctor
+
+%.adoc.pdf: %.adoc
+	asciidoctor-pdf --out-file=$@ $<
 
 # ==============================================================
 # Make RTF from DocBook
@@ -146,4 +156,4 @@ uninstall:
 # 2019-01-03: Create also a dict format dictionary.
 #
 # 2019-01-18: Update the requirements. Add rule to uninstall the dict format
-# dictionary. Add ODT, RTF and TXT outputs.
+# dictionary. Add ODT, PDF, RTF and TXT outputs.
