@@ -6,13 +6,17 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901030021
+# Last modified 201901181407
 # See change log at the end of the file
 
 # ==============================================================
 # Requirements
 
+# - asciidoctor
+# - awk
+# - dictfmt
 # - make
+# - pandoc
 
 # ==============================================================
 # Config
@@ -71,7 +75,7 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 	pandoc -f docbook -t epub --output $@ $<
 
 # ==============================================================
-# Make dict and install it
+# Make dict
 
 target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
 	dictfmt \
@@ -85,12 +89,21 @@ target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
 %.dict.dz: %.dict
 	dictzip --force $<
 
+# ==============================================================
+# Install and uninstall dict
+
 .PHONY: install
 install: target/pandunia.dict.dz
 	cp --force \
 		$^ \
 		$(addsuffix .index, $(basename $(basename $^))) \
 		/usr/share/dictd/
+	/usr/sbin/dictdconfig --write
+	/etc/init.d/dictd restart
+
+.PHONY: uninstall
+uninstall:
+	rm --force /usr/share/dictd/elefen.*
 	/usr/sbin/dictdconfig --write
 	/etc/init.d/dictd restart
 
@@ -101,3 +114,6 @@ install: target/pandunia.dict.dz
 # Asciidoctor.
 #
 # 2019-01-03: Create also a dict format dictionary.
+#
+# 2019-01-18: Update the requirements. Add rule to uninstall the dict format
+# dictionary.
