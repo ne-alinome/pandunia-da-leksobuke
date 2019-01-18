@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901090103
+# Last modified 201901181337
 # See change log at the end of the file
 
 # ==============================================================
@@ -26,7 +26,7 @@ BEGIN { # {{{1
 
   if (target=="asciidoctor"){
     print "= pandunia da lekse buke"
-    print ":author: Risto Kupsala"
+    print ":author: risto kupsala"
     print ":revdate: {nbsp}"
     print
     print ":bullet: ."
@@ -38,17 +38,15 @@ BEGIN { # {{{1
     print "// This document was created automatically"
     print "// in Asciidoctor format (http://asciidoctor.org)."
     print
-    print "== na ci buke"
+    print "== na tem du ci buke"
     print
     print "ci buke ada"
-    print "http://pandunia.info[pandunia.info] da zay pan lekse liste"
-    print "du _risto kupsala_ kitaba."
+    print "http://pandunia.info[pandunia.info] da zay pan lekse liste."
     print
-    print "fini ci buke na EPUB i \"dict\" metode mey zaman"
-    print "plus na http://ne.alinome.net[ne.alinome.net]"
-    print "du _markos krus_ (\"Marcos Cruz\")."
+    print "ci buke, du \"EPUB\" i \"dict\" metode,"
+    print "ze http://ne.alinome.net[ne.alinome.net]."
     print
-    print "na 2019-01-09"
+    print "na 2019-01"
 
     current_letter="*" # dummy non-alphabet character to start
 
@@ -58,21 +56,18 @@ BEGIN { # {{{1
 
   if (target=="c5"||target=="p"){
     print "pandunia da lekse buke"
-    print "du Risto Kupsala"
     print
-    print "ci \"dict\" lekse liste ada http://pandunia.info da pan lekse"
-    print "du risto kupsala kitaba."
+    print "ci lekse liste ada http://pandunia.info da pan lekse."
     print
-    print "fini ci buke na EPUB i \"dict\" metode mey zaman"
-    print "plus na http://ne.alinome.net"
-    print "du _markos krus_ (\"Marcos Cruz\")."
+    print "ci lekse liste, du \"EPUB\" i \"dict\" metode, ze http://ne.alinome.net."
     print
-    print "na 2019-01-03"
+    print "na 2019-01"
     print
   }
 
   iso_codes=1
 
+  # XXX TODO --
   # if (iso_codes){
   #   eng_lang="eng"
   #   esp_lang="epo"
@@ -211,3 +206,8 @@ END { } # {{{1
   # language codes for the translations.
 #
 # 2019-01-09: Update date.
+#
+# 2019-01-14: Simplify the header added to the book.
+#
+# 2019-01-18: Improve the headers added to Asciidoctor and dict
+  # formats.
