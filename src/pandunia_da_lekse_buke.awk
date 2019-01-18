@@ -41,12 +41,11 @@ BEGIN { # {{{1
     print "== na tem du ci buke"
     print
     print "ci buke ada"
-    print "http://pandunia.info[pandunia.info] da zay pan lekse liste."
+    print "http://pandunia.info[pandunia.info] da pan lekse liste."
     print
-    print "ci buke, du \"EPUB\" i \"dict\" metode,"
-    print "ze http://ne.alinome.net[ne.alinome.net]."
+    print "ci buke i ali forme ze http://ne.alinome.net[ne.alinome.net]."
     print
-    print "na 2019-01"
+    print "na 2019-01."
 
     current_letter="*" # dummy non-alphabet character to start
 
@@ -56,12 +55,16 @@ BEGIN { # {{{1
 
   if (target=="c5"||target=="p"){
     print "pandunia da lekse buke"
+    print "(Pandunia Dictionary)"
     print
     print "ci lekse liste ada http://pandunia.info da pan lekse."
+    print "(This dictionary contains all the vocabulary from http://pandunia.info.)"
     print
-    print "ci lekse liste, du \"EPUB\" i \"dict\" metode, ze http://ne.alinome.net."
+    print "ci \"dict\" i ali forme ze http://ne.alinome.net."
+    print "(This \"dict\" and other formats from http://ne.alinome.net.)"
     print
-    print "na 2019-01"
+    print "na 2019-01."
+    print "(In 2019-01.)"
     print
   }
 
