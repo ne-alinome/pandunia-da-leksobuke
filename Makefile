@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901181735
+# Last modified 201901191422
 # See change log at the end of the file
 
 # ==============================================================
@@ -15,6 +15,7 @@
 # - asciidoctor
 # - asciidoctor-pdf
 # - awk
+# - bash
 # - dictfmt
 # - make
 # - pandoc
@@ -25,6 +26,8 @@
 VPATH=./src:./target
 
 dict_input_format=c5
+
+SHELL=/bin/bash
 
 # ==============================================================
 # Interface
@@ -69,8 +72,10 @@ clean:
 # Make Asciidoctor from the original table
 
 target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
+	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=asciidoctor \
+		--assign datadate=$${datadate:0:10} \
 		--file src/pandunia_da_lekse_buke.awk \
 		$< > $@
 
@@ -78,8 +83,10 @@ target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
 # Make dictfmt input text from the original table
 
 tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
+	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=$(dict_input_format) \
+		--assign datadate=$${datadate:0:10} \
 		--file src/pandunia_da_lekse_buke.awk \
 		$< > $@
 

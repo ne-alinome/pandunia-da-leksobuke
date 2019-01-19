@@ -1,6 +1,6 @@
 = TO-DO of _pandunia da lekse buke_
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-01-18
+:revdate: 2019-01-19
 
 // This file is part of the project
 // _pandunia da lekse buke_
@@ -8,5 +8,5 @@
 
 - Make the sorting of translations automatic.
 - Install also <pandunia.sh> as </usr/local/bin/pandunia>.
-- Add the date of the original data update to the info headers.
 - Improve the stylesheet of EPUB.
+- Add explanation about the leading dots.

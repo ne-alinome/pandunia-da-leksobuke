@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901181337
+# Last modified 201901181853
 # See change log at the end of the file
 
 # ==============================================================
@@ -27,7 +27,7 @@ BEGIN { # {{{1
   if (target=="asciidoctor"){
     print "= pandunia da lekse buke"
     print ":author: risto kupsala"
-    print ":revdate: {nbsp}"
+    print ":revdate: ",datadate
     print
     print ":bullet: ."
     print
@@ -45,7 +45,7 @@ BEGIN { # {{{1
     print
     print "ci buke i ali forme ze http://ne.alinome.net[ne.alinome.net]."
     print
-    print "na 2019-01."
+    print "nen mes den du lekse informe: ",datadate,"."
 
     current_letter="*" # dummy non-alphabet character to start
 
@@ -61,10 +61,10 @@ BEGIN { # {{{1
     print "(This dictionary contains all the vocabulary from http://pandunia.info.)"
     print
     print "ci \"dict\" i ali forme ze http://ne.alinome.net."
-    print "(This \"dict\" and other formats from http://ne.alinome.net.)"
+    print "(This \"dict\" and other formats are from http://ne.alinome.net.)"
     print
-    print "na 2019-01."
-    print "(In 2019-01.)"
+    print "nen mes den du lekse informe: ",datadate
+    print "(Date of the vocabulary data: ",datadate,".)"
     print
   }
 
