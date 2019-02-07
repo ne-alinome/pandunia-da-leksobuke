@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201902071701
+# Last modified 201902071736
 # See change log at the end of the file
 
 # ==============================================================
@@ -239,7 +239,8 @@ target/spa-pandunia.dict: tmp/pandunia_da_lekse_liste_na_spani.txt
 install: \
 	target/pandunia.dict.dz \
 	target/eng-pandunia.dict.dz \
-	target/epo-pandunia.dict.dz
+	target/epo-pandunia.dict.dz \
+	target/spa-pandunia.dict.dz
 	cp --force \
 		$^ \
 		$(addsuffix .index, $(basename $(basename $^))) \
