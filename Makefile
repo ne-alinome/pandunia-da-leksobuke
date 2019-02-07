@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201901191422
+# Last modified 201902071701
 # See change log at the end of the file
 
 # ==============================================================
@@ -39,7 +39,11 @@ all: dict epub html odt pdf rtf txt xml
 adoc: target/pandunia_da_lekse_buke.adoc
 
 .PHONY: dict
-dict: target/pandunia.dict.dz
+dict: \
+	target/pandunia.dict.dz \
+	target/eng-pandunia.dict.dz \
+	target/epo-pandunia.dict.dz \
+	target/spa-pandunia.dict.dz
 
 .PHONY: epub
 epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
@@ -80,7 +84,10 @@ target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
 		$< > $@
 
 # ==============================================================
-# Make dictfmt input text from the original table
+# Make dictfmt input texts from the original table
+
+# ----------------------------------------------
+# Main dictionary, from Pandunia to all other languages
 
 tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
@@ -88,6 +95,42 @@ tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
 		--assign target=$(dict_input_format) \
 		--assign datadate=$${datadate:0:10} \
 		--file src/pandunia_da_lekse_buke.awk \
+		$< > $@
+
+# ----------------------------------------------
+# Vocabulary English-Pandunia
+
+tmp/pandunia_da_lekse_liste_na_engli.txt: src/pandunia-lekse.tsv
+	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
+	awk \
+		--assign target=$(dict_input_format) \
+		--assign datadate=$${datadate:0:10} \
+		--assign lang=eng \
+		--file src/pandunia_da_lekse_liste.awk \
+		$< > $@
+
+# ----------------------------------------------
+# Vocabulary Esperanto-Pandunia
+
+tmp/pandunia_da_lekse_liste_na_esperanti.txt: src/pandunia-lekse.tsv
+	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
+	awk \
+		--assign target=$(dict_input_format) \
+		--assign datadate=$${datadate:0:10} \
+		--assign lang=epo \
+		--file src/pandunia_da_lekse_liste.awk \
+		$< > $@
+
+# ----------------------------------------------
+# Vocabulary Esperanto-Pandunia
+
+tmp/pandunia_da_lekse_liste_na_spani.txt: src/pandunia-lekse.tsv
+	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
+	awk \
+		--assign target=$(dict_input_format) \
+		--assign datadate=$${datadate:0:10} \
+		--assign lang=spa \
+		--file src/pandunia_da_lekse_liste.awk \
 		$< > $@
 
 # ==============================================================
@@ -159,6 +202,33 @@ target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
 		-$(dict_input_format) \
 		$(basename $@) < $<
 
+target/eng-pandunia.dict: tmp/pandunia_da_lekse_liste_na_engli.txt
+	dictfmt \
+		--utf8 \
+		--allchars \
+		-u "http://pandunia.info" \
+		-s "English-Pandunia Vocabulary" \
+		-$(dict_input_format) \
+		$(basename $@) < $<
+
+target/epo-pandunia.dict: tmp/pandunia_da_lekse_liste_na_esperanti.txt
+	dictfmt \
+		--utf8 \
+		--allchars \
+		-u "http://pandunia.info" \
+		-s "Vortaro Esperanto-Pandunio" \
+		-$(dict_input_format) \
+		$(basename $@) < $<
+
+target/spa-pandunia.dict: tmp/pandunia_da_lekse_liste_na_spani.txt
+	dictfmt \
+		--utf8 \
+		--allchars \
+		-u "http://pandunia.info" \
+		-s "Vocabulario español-pandunia" \
+		-$(dict_input_format) \
+		$(basename $@) < $<
+
 %.dict.dz: %.dict
 	dictzip --force $<
 
@@ -166,7 +236,10 @@ target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
 # Install and uninstall dict
 
 .PHONY: install
-install: target/pandunia.dict.dz
+install: \
+	target/pandunia.dict.dz \
+	target/eng-pandunia.dict.dz \
+	target/epo-pandunia.dict.dz
 	cp --force \
 		$^ \
 		$(addsuffix .index, $(basename $(basename $^))) \
@@ -176,7 +249,7 @@ install: target/pandunia.dict.dz
 
 .PHONY: uninstall
 uninstall:
-	rm --force /usr/share/dictd/elefen.*
+	rm --force /usr/share/dictd/*pandunia.*
 	/usr/sbin/dictdconfig --write
 	/etc/init.d/dictd restart
 
@@ -190,3 +263,8 @@ uninstall:
 #
 # 2019-01-18: Update the requirements. Add rule to uninstall the dict format
 # dictionary. Add HTML, ODT, PDF, RTF and TXT outputs.
+#
+# 2019-02-05: Fix uninstalling the dict.
+#
+# 2019-02-07: Add rules to build vocabularies English-Pandunia,
+# Esperanto-Pandunia and Spanish-Pandunia.
