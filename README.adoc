@@ -29,9 +29,9 @@ Website:: http://ne.alinome.net
 | EPUB                              | epub
 | HTML                              | html
 | OpenDocument                      | odt
-| PDF                               | pdf
-| Plain text                        | txt
+| Portable Document Format          | pdf
 | Rich Text Format                  | rtf
+| Text                              | txt
 |===
 
 More formats may be added in the future.
@@ -61,8 +61,8 @@ Then enter the project directory and give the proper command:
 | `make rtf`            | Make only RTF
 | `make txt`            | Make only plain text
 | `make xml`            | Make only DocBook
-| `sudo make install`   | Install the DICT database
-| `sudo make uninstall` | Uninstall the DICT database
+| `sudo make install`   | Install the DICT databases
+| `sudo make uninstall` | Uninstall the DICT databases
 |===
 
 == About the filenames of the target documents
@@ -87,7 +87,7 @@ pandunia_da_lekse_buke.adoc.pdf
 pandunia_da_lekse_buke.adoc.xml
 ....
 
-And these files are created from DocBook by pandoc:
+These files are created from DocBook by pandoc:
 
 ....
 pandunia_da_lekse_buke.adoc.xml.pandoc.epub
@@ -97,13 +97,14 @@ pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
 pandunia_da_lekse_buke.adoc.xml.pandoc.txt
 ....
 
-As you see, this naming convention allows both HTML variants coexist
-without filename clash.  In future versions of the project, also
-variants of the EPUB format will be added as well,  e.g.
-<pandunia_da_lekse_buke.adoc.epub> (direct conversion from Asciidoctor
-to EPUB, by asciidoctor-epub3) and
-<pandunia_da_lekse_buke.adoc.xml.xsltproc.epub> (conversion from
-DocBook to EPUB, by xsltproc).
+These file is from DocBook by dbtoepub:
+
+....
+pandunia_da_lekse_buke.adoc.xml.dbtoepub.epub
+....
+
+As you see, this naming convention allows all variants coexist without
+filename clash. 
 
 Of course, you are free to rename your files of choice, e.g. rename
 <pandunia_da_lekse_buke.adoc.xml.pandoc.epub>
@@ -114,40 +115,28 @@ Of course, you are free to rename your files of choice, e.g. rename
 After making (`make dict`) and installing (`sudo make install`) the
 dict-format dictionary, you can use dict as usual. Examples:
 
-- List the available dictionaries with `dict -D`. You must see the
-  "pandunia" dictionary in the list.
-- Consult a Pandunia word with `dict -d pandunia WORD`.
-- Request information on the dictionary with `dict -i pandunia`.
+- List the names and descriptions of all available dictionaries with
+  `dict -D`.
+- Consult a Pandunia word with `dict -d pandunia WORD` for the
+  generial dictionary, `dict -d eng-pandunia WORB` for the
+  English-Pandunia vocabulary, etc.
+- Request information on the dictionary with `dict -i DICTIONARYNAME`.
 
 Read the dict's documentation for more details and search options.
 
 === Wrapper command
 
 A simple shell wrapper is provided in <src/pandunia.sh>. You can copy
-that file to a location in your path, e.g. as <{user}/bin/pandunia> or
-</usr/local/bin/pandunia>. Then the command `pandunia` will be
-equivalent to `dict -d pandunia`.
-
-Alternatively, you may define an equivalent alias for your system
-shell. Example definition for Bash (to be added to the file
-<{user}/.bash_aliases>):
-
-----
-alias pandunia='dict -d pandunia'
-----
+that file to a location in your path, e.g. as <{user}/bin/pandunia>,
+<{user}/.local/bin/pandunia> or </usr/local/bin/pandunia>. Then the
+command `pandunia` will search all installed dictonaries that have the
+word "pandunia" (case insensitive) in their description.
 
 == Known issues
 
 === EPUB
 
-Currently, The EPUB is built from DocBook using an old version of
-pandoc which does not allow easy customization of the template.  The
-result is not fully satisfactory yet.  Planned alternatives are: an
-updated pandoc, asciidoctor-epub3 and xsltproc.
-
-=== PDF
-
-The letter sections of the document don't start on a new page.
+The template and stylesheet are not customized yet.
 
 === Rich Text Format
 

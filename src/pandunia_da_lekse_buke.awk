@@ -8,7 +8,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201901181853
+# Last modified 201902071752
 # See change log at the end of the file
 
 # ==============================================================
@@ -30,6 +30,9 @@ BEGIN { # {{{1
     print "= pandunia da lekse buke"
     print ":author: risto kupsala"
     print ":revdate: ",datadate
+    print "ifdef::backend-pdf[]"
+    print ":doctype: book"
+    print "endif::[]"
     print
     print ":bullet: ."
     print
@@ -216,3 +219,5 @@ END { } # {{{1
 #
 # 2019-01-18: Improve the headers added to Asciidoctor and dict
   # formats.
+  #
+# 2019-02-07: Make Asciidoctor's doctype a book when target is PDF.
