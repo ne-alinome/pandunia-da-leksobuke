@@ -1,6 +1,6 @@
 = pandunia da lekse buke
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-01-18
+:revdate: 2019-02-07
 
 // This file is part of the project
 // _pandunia da lekse buke_
@@ -156,4 +156,4 @@ Therefore, building an automatic table of contents with a
 wordprocessor is not possible.
 
 Anyway, this format is included only because it can be read by old
-ordprocessors.
+wordprocessors.

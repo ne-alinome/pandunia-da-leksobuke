@@ -1,5 +1,7 @@
 #!/usr/bin/awk
 
+# pandunia_da_lekse_buke.awk
+
 # This file is part of the project
 # _pandunia da lekse buke_
 # (http://ne.alinome.net)
