@@ -8,7 +8,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201902071712
+# Last modified 201902071717
 # See change log at the end of the file
 
 # ==============================================================
@@ -109,7 +109,7 @@ BEGIN { # {{{1
 
   }
 
-  if (target=="c5"||target=="p"){
+  if (target=="c5"||target=="p"||target=="j"){
     print "pandunia da lekse liste na " lang_name
     print "(" eng_lang_name "-Pandunia Vocabulary)"
     print
