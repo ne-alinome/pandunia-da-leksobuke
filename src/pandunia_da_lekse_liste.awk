@@ -8,7 +8,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201902071717
+# Last modified 201902071737
 # See change log at the end of the file
 
 # ==============================================================
@@ -110,17 +110,57 @@ BEGIN { # {{{1
   }
 
   if (target=="c5"||target=="p"||target=="j"){
+    switch (lang) {
+      case "epo": print "Vortaro Esperanto-Pandunio"; break
+      case "spa": print "Vocabulario español-pandunia"; break
+    }
     print "pandunia da lekse liste na " lang_name
-    print "(" eng_lang_name "-Pandunia Vocabulary)"
+    print eng_lang_name "-Pandunia Vocabulary"
     print
-    print "ci lekse liste ada http://pandunia.info da pan lekse."
-    print "(This dictionary contains all the vocabulary from http://pandunia.info.)"
+    switch (lang) {
+      case "epo": {
+        print "Ĉi vortaro enhavas ĉiujn vortojn el:"
+        break
+      }
+      case "spa": {
+        print "Este vocabulario incluye todos los términos de:"
+        break
+      }
+    }
+    print "ci lekse liste ada pan lekse du:"
+    print "This dictionary contains all the vocabulary from:"
     print
-    print "ci \"dict\" i ali forme ze http://ne.alinome.net."
-    print "(This \"dict\" and other formats are from http://ne.alinome.net.)"
+    print "  http://pandunia.info"
     print
-    print "nen mes den du lekse informe: ",datadate
-    print "(Date of the vocabulary data: ",datadate,".)"
+    switch (lang) {
+      case "epo": {
+        print "Ĉi dosiero DICT kaj aliaj formatoj estas en:"
+        break
+      }
+      case "spa": {
+        print "Este fichero en formato DICT y otros están en:"
+        break
+      }
+    }
+    print "ci DICT liste i ali forme ze:"
+    print "This DICT file and other formats are in:"
+    print
+    print "  http://ne.alinome.net"
+    print
+    switch (lang) {
+      case "epo": {
+        print "Dato de la vortara datumbanko:"
+        break
+      }
+      case "spa": {
+        print "Fecha de la base de datos del diccionario:"
+        break
+      }
+    }
+    print "nen mes den du lekse informe:"
+    print "Date of the vocabulary data:"
+    print
+    print "  " datadate
     print
   }
 
