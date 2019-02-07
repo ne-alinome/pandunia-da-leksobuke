@@ -6,7 +6,7 @@
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201902071736
+# Last modified 201902071744
 # See change log at the end of the file
 
 # ==============================================================
@@ -17,6 +17,7 @@
 # - awk
 # - bash
 # - dictfmt
+# - dbtoepub
 # - make
 # - pandoc
 
@@ -25,9 +26,9 @@
 
 VPATH=./src:./target
 
-dict_input_format=c5
-
 SHELL=/bin/bash
+
+dict_input_format=c5
 
 # ==============================================================
 # Interface
@@ -46,7 +47,9 @@ dict: \
 	target/spa-pandunia.dict.dz
 
 .PHONY: epub
-epub: target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+epub: \
+	target/pandunia_da_lekse_buke.adoc.xml.dbtoepub.epub \
+	target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
 
 .PHONY: html
 html: \
@@ -141,6 +144,15 @@ tmp/pandunia_da_lekse_liste_na_spani.txt: src/pandunia-lekse.tsv
 
 # ==============================================================
 # Make EPUB from DocBook
+
+# ----------------------------------------------
+# With dbtoepub
+
+%.adoc.xml.dbtoepub.epub: %.adoc.xml
+	dbtoepub --output $@ $<
+
+# ----------------------------------------------
+# With pandoc
 
 %.adoc.xml.pandoc.epub: %.adoc.xml
 	pandoc -f docbook -t epub --output $@ $<
@@ -268,4 +280,5 @@ uninstall:
 # 2019-02-05: Fix uninstalling the dict.
 #
 # 2019-02-07: Add rules to build vocabularies English-Pandunia,
-# Esperanto-Pandunia and Spanish-Pandunia.
+# Esperanto-Pandunia and Spanish-Pandunia. Make an additional EPUB with
+# dbtoepub.

@@ -1,6 +1,6 @@
 = TO-DO of _pandunia da lekse buke_
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-01-19
+:revdate: 2019-02-07
 
 // This file is part of the project
 // _pandunia da lekse buke_
@@ -10,3 +10,4 @@
 - Install also <pandunia.sh> as </usr/local/bin/pandunia>.
 - Improve the stylesheet of EPUB.
 - Add explanation about the leading dots.
+- Create EPUB3 with pandoc.
