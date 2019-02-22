@@ -1,14 +1,14 @@
 #!/usr/bin/awk
 
-# pandunia_da_lekse_buke.awk
+# pandunia_da_leksobuke.awk
 
 # This file is part of the project
-# _pandunia da lekse buke_
+# _pandunia da leksobuke_
 # (http://ne.alinome.net)
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201902071752
+# Last modified 201902221731
 # See change log at the end of the file
 
 # ==============================================================
@@ -27,7 +27,7 @@ BEGIN { # {{{1
   #exit # XXX INFORMER
 
   if (target=="asciidoctor"){
-    print "= pandunia da lekse buke"
+    print "= pandunia da leksobuke"
     print ":author: risto kupsala"
     print ":revdate: ",datadate
     print "ifdef::backend-pdf[]"
@@ -37,7 +37,7 @@ BEGIN { # {{{1
     print ":bullet: ."
     print
     print "// This file is part of the project"
-    print "// _pandunia da lekse buke_"
+    print "// _pandunia da leksobuke_"
     print "// (http://ne.alinome.net)"
     print
     print "// This document was created automatically"
@@ -46,11 +46,11 @@ BEGIN { # {{{1
     print "== na tem du ci buke"
     print
     print "ci buke ada"
-    print "http://pandunia.info[pandunia.info] da pan lekse liste."
+    print "http://pandunia.info[pandunia.info] da pan leksoliste."
     print
     print "ci buke i ali forme ze http://ne.alinome.net[ne.alinome.net]."
     print
-    print "nen mes den du lekse informe: ",datadate,"."
+    print "nen mes den du leksoinforme: ",datadate,"."
 
     current_letter="*" # dummy non-alphabet character to start
 
@@ -59,16 +59,16 @@ BEGIN { # {{{1
   }
 
   if (target=="c5"||target=="p"){
-    print "pandunia da lekse buke"
+    print "pandunia da leksobuke"
     print "(Pandunia Dictionary)"
     print
-    print "ci lekse liste ada http://pandunia.info da pan lekse."
+    print "ci leksoliste ada http://pandunia.info da pan lekse."
     print "(This dictionary contains all the vocabulary from http://pandunia.info.)"
     print
     print "ci \"dict\" i ali forme ze http://ne.alinome.net."
     print "(This \"dict\" and other formats are from http://ne.alinome.net.)"
     print
-    print "nen mes den du lekse informe: ",datadate
+    print "nen mes den du leksoinforme: ",datadate
     print "(Date of the vocabulary data: ",datadate,".)"
     print
   }
@@ -221,3 +221,5 @@ END { } # {{{1
   # formats.
   #
 # 2019-02-07: Make Asciidoctor's doctype a book when target is PDF.
+  #
+# 2019-02-22: Rename the file after the project.

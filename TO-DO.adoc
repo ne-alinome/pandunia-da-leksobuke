@@ -1,9 +1,9 @@
-= TO-DO of _pandunia da lekse buke_
+= TO-DO of _pandunia da leksobuke_
 :author: Marcos Cruz (programandala.net)
 :revdate: 2019-02-07
 
 // This file is part of the project
-// _pandunia da lekse buke_
+// _pandunia da leksobuke_
 // (http://ne.alinome.net)
 
 - Make the sorting of translations automatic.

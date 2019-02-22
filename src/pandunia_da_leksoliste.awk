@@ -1,6 +1,6 @@
 #!/usr/bin/awk
 
-# pandunia_da_lekse_liste.awk
+# pandunia_da_leksoliste.awk
 
 # This file is part of the project
 # _pandunia da lekse buke_
@@ -8,7 +8,7 @@
 
 # By Marcos Cruz (programandala.net), 2019
 
-# Last modified 201902071737
+# Last modified 201902221731
 # See change log at the end of the file
 
 # ==============================================================
@@ -255,3 +255,5 @@ END { } # {{{1
 # Change log {{{1
 
 # 2019-02-07: Start.
+  #
+# 2019-02-22: Rename the file after the project.

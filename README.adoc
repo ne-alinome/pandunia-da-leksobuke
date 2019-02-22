@@ -1,9 +1,9 @@
-= pandunia da lekse buke
+= pandunia da leksobuke
 :author: Marcos Cruz (programandala.net)
-:revdate: 2019-02-07
+:revdate: 2019-02-22
 
 // This file is part of the project
-// _pandunia da lekse buke_
+// _pandunia da leksobuke_
 // (http://ne.alinome.net)
 
 :user: ~
@@ -76,39 +76,39 @@ Examples:
 This is the Asciidoctor source file, made from the original data:
 
 ....
-pandunia_da_lekse_buke.adoc
+pandunia_da_leksobuke.adoc
 ....
 
 These files are created directly from and by Asciidoctor:
 
 ....
-pandunia_da_lekse_buke.adoc.html
-pandunia_da_lekse_buke.adoc.pdf
-pandunia_da_lekse_buke.adoc.xml
+pandunia_da_leksobuke.adoc.html
+pandunia_da_leksobuke.adoc.pdf
+pandunia_da_leksobuke.adoc.xml
 ....
 
 These files are created from DocBook by pandoc:
 
 ....
-pandunia_da_lekse_buke.adoc.xml.pandoc.epub
-pandunia_da_lekse_buke.adoc.xml.pandoc.html
-pandunia_da_lekse_buke.adoc.xml.pandoc.odt
-pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
-pandunia_da_lekse_buke.adoc.xml.pandoc.txt
+pandunia_da_leksobuke.adoc.xml.pandoc.epub
+pandunia_da_leksobuke.adoc.xml.pandoc.html
+pandunia_da_leksobuke.adoc.xml.pandoc.odt
+pandunia_da_leksobuke.adoc.xml.pandoc.rtf
+pandunia_da_leksobuke.adoc.xml.pandoc.txt
 ....
 
 These file is from DocBook by dbtoepub:
 
 ....
-pandunia_da_lekse_buke.adoc.xml.dbtoepub.epub
+pandunia_da_leksobuke.adoc.xml.dbtoepub.epub
 ....
 
 As you see, this naming convention allows all variants coexist without
 filename clash. 
 
 Of course, you are free to rename your files of choice, e.g. rename
-<pandunia_da_lekse_buke.adoc.xml.pandoc.epub>
-<pandunia_da_lekse_buke.epub>.
+<pandunia_da_leksobuke.adoc.xml.pandoc.epub>
+<pandunia_da_leksobuke.epub>.
 
 == How to use the DICT format
 

@@ -1,12 +1,12 @@
-# Makefile of _pandunia da lekse buke_
+# Makefile of _pandunia da leksobuke_
 
 # This file is part of the project
-# _pandunia da lekse buke_
+# _pandunia da leksobuke_
 # (http://ne.alinome.net)
 
 # By Marcos Cruz (programandala.net)
 
-# Last modified 201902071744
+# Last modified 201902221734
 # See change log at the end of the file
 
 # ==============================================================
@@ -37,7 +37,7 @@ dict_input_format=c5
 all: dict epub html odt pdf rtf txt xml
 
 .PHONY: adoc
-adoc: target/pandunia_da_lekse_buke.adoc
+adoc: target/pandunia_da_leksobuke.adoc
 
 .PHONY: dict
 dict: \
@@ -48,28 +48,28 @@ dict: \
 
 .PHONY: epub
 epub: \
-	target/pandunia_da_lekse_buke.adoc.xml.dbtoepub.epub \
-	target/pandunia_da_lekse_buke.adoc.xml.pandoc.epub
+	target/pandunia_da_leksobuke.adoc.xml.dbtoepub.epub \
+	target/pandunia_da_leksobuke.adoc.xml.pandoc.epub
 
 .PHONY: html
 html: \
-	target/pandunia_da_lekse_buke.adoc.html \
-	target/pandunia_da_lekse_buke.adoc.xml.pandoc.html
+	target/pandunia_da_leksobuke.adoc.html \
+	target/pandunia_da_leksobuke.adoc.xml.pandoc.html
 
 .PHONY: odt
-odt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.odt
+odt: target/pandunia_da_leksobuke.adoc.xml.pandoc.odt
 
 .PHONY: pdf
-pdf: target/pandunia_da_lekse_buke.adoc.pdf
+pdf: target/pandunia_da_leksobuke.adoc.pdf
 
 .PHONY: rtf
-rtf: target/pandunia_da_lekse_buke.adoc.xml.pandoc.rtf
+rtf: target/pandunia_da_leksobuke.adoc.xml.pandoc.rtf
 
 .PHONY: txt
-txt: target/pandunia_da_lekse_buke.adoc.xml.pandoc.txt
+txt: target/pandunia_da_leksobuke.adoc.xml.pandoc.txt
 
 .PHONY: xml
-xml: target/pandunia_da_lekse_buke.adoc.xml
+xml: target/pandunia_da_leksobuke.adoc.xml
 
 .PHONY: clean
 clean:
@@ -78,12 +78,12 @@ clean:
 # ==============================================================
 # Make Asciidoctor from the original table
 
-target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
+target/pandunia_da_leksobuke.adoc: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=asciidoctor \
 		--assign datadate=$${datadate:0:10} \
-		--file src/pandunia_da_lekse_buke.awk \
+		--file src/pandunia_da_leksobuke.awk \
 		$< > $@
 
 # ==============================================================
@@ -92,48 +92,48 @@ target/pandunia_da_lekse_buke.adoc: src/pandunia-lekse.tsv
 # ----------------------------------------------
 # Main dictionary, from Pandunia to all other languages
 
-tmp/pandunia_da_lekse_buke.txt: src/pandunia-lekse.tsv
+tmp/pandunia_da_leksobuke.txt: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=$(dict_input_format) \
 		--assign datadate=$${datadate:0:10} \
-		--file src/pandunia_da_lekse_buke.awk \
+		--file src/pandunia_da_leksobuke.awk \
 		$< > $@
 
 # ----------------------------------------------
 # Vocabulary English-Pandunia
 
-tmp/pandunia_da_lekse_liste_na_engli.txt: src/pandunia-lekse.tsv
+tmp/pandunia_da_leksoliste_na_engli.txt: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=$(dict_input_format) \
 		--assign datadate=$${datadate:0:10} \
 		--assign lang=eng \
-		--file src/pandunia_da_lekse_liste.awk \
+		--file src/pandunia_da_leksoliste.awk \
 		$< > $@
 
 # ----------------------------------------------
 # Vocabulary Esperanto-Pandunia
 
-tmp/pandunia_da_lekse_liste_na_esperanti.txt: src/pandunia-lekse.tsv
+tmp/pandunia_da_leksoliste_na_esperanti.txt: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=$(dict_input_format) \
 		--assign datadate=$${datadate:0:10} \
 		--assign lang=epo \
-		--file src/pandunia_da_lekse_liste.awk \
+		--file src/pandunia_da_leksoliste.awk \
 		$< > $@
 
 # ----------------------------------------------
 # Vocabulary Esperanto-Pandunia
 
-tmp/pandunia_da_lekse_liste_na_spani.txt: src/pandunia-lekse.tsv
+tmp/pandunia_da_leksoliste_na_spani.txt: src/pandunia-lekse.tsv
 	datadate=$$(stat --format='%y' src/pandunia-lekse.tsv);\
 	awk \
 		--assign target=$(dict_input_format) \
 		--assign datadate=$${datadate:0:10} \
 		--assign lang=spa \
-		--file src/pandunia_da_lekse_liste.awk \
+		--file src/pandunia_da_leksoliste.awk \
 		$< > $@
 
 # ==============================================================
@@ -205,16 +205,16 @@ tmp/pandunia_da_lekse_liste_na_spani.txt: src/pandunia-lekse.tsv
 # ==============================================================
 # Make dict
 
-target/pandunia.dict: tmp/pandunia_da_lekse_buke.txt
+target/pandunia.dict: tmp/pandunia_da_leksobuke.txt
 	dictfmt \
 		--utf8 \
 		--allchars \
 		-u "http://pandunia.info" \
-		-s "pandunia da lekse buke (Pandunia Dictionary)" \
+		-s "pandunia da leksobuke (Pandunia Dictionary)" \
 		-$(dict_input_format) \
 		$(basename $@) < $<
 
-target/eng-pandunia.dict: tmp/pandunia_da_lekse_liste_na_engli.txt
+target/eng-pandunia.dict: tmp/pandunia_da_leksoliste_na_engli.txt
 	dictfmt \
 		--utf8 \
 		--allchars \
@@ -223,7 +223,7 @@ target/eng-pandunia.dict: tmp/pandunia_da_lekse_liste_na_engli.txt
 		-$(dict_input_format) \
 		$(basename $@) < $<
 
-target/epo-pandunia.dict: tmp/pandunia_da_lekse_liste_na_esperanti.txt
+target/epo-pandunia.dict: tmp/pandunia_da_leksoliste_na_esperanti.txt
 	dictfmt \
 		--utf8 \
 		--allchars \
@@ -232,7 +232,7 @@ target/epo-pandunia.dict: tmp/pandunia_da_lekse_liste_na_esperanti.txt
 		-$(dict_input_format) \
 		$(basename $@) < $<
 
-target/spa-pandunia.dict: tmp/pandunia_da_lekse_liste_na_spani.txt
+target/spa-pandunia.dict: tmp/pandunia_da_leksoliste_na_spani.txt
 	dictfmt \
 		--utf8 \
 		--allchars \
@@ -282,3 +282,5 @@ uninstall:
 # 2019-02-07: Add rules to build vocabularies English-Pandunia,
 # Esperanto-Pandunia and Spanish-Pandunia. Make an additional EPUB with
 # dbtoepub.
+#
+# 2019-02-22: Update after the renaming of the project.
