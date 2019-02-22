@@ -97,7 +97,7 @@ pandunia_da_leksobuke.adoc.xml.pandoc.rtf
 pandunia_da_leksobuke.adoc.xml.pandoc.txt
 ....
 
-These file is from DocBook by dbtoepub:
+This file is from DocBook by dbtoepub:
 
 ....
 pandunia_da_leksobuke.adoc.xml.dbtoepub.epub
